@@ -7,3 +7,9 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Composer
+vendor/
+
+# Application specific
+cache/
