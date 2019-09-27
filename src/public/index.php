@@ -6,6 +6,8 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
 
+$prod = getenv("VOLRPI_PROD") != FALSE;
+
 // Require the Composer autoload file to load the dependencies
 require __DIR__ . '/../../vendor/autoload.php';
 
@@ -31,7 +33,7 @@ $app->addErrorMiddleware(true, true, true); // Must go last
 // This sets up the templating engine so that we can use it later
 $container->set('view', function () {
     return new \Slim\Views\Twig(TEMPLATE_DIR, [
-        'cache' => CACHE_DIR
+        'cache' => $prod ? CACHE_DIR : false
     ]);
 });
 
