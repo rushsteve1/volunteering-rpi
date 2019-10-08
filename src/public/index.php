@@ -52,6 +52,11 @@ $app->get('/organizations', function (Request $request, Response $response, arra
    return $this->get('view')->render($response, 'organizations.html', []);
 })->setName('organizations');
 
+// The handler for the leaderboard page
+$app->get('/leaderboard', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'leaderboard.html', []);
+})->setName('leaderboard');
+
 // Run the application
 $app->run();
 
