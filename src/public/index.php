@@ -42,6 +42,16 @@ $app->get('/', function (Request $request, Response $response, array $args) {
    return $this->get('view')->render($response, 'index.html', []);
 })->setName('index');
 
+// The handler for the events page
+$app->get('/events', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'events.html', []);
+})->setName('events');
+
+// The handler for the organizations page
+$app->get('/organizations', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'organizations.html', []);
+})->setName('organizations');
+
 // Run the application
 $app->run();
 
