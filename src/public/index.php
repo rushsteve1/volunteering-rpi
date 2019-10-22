@@ -5,6 +5,7 @@ use DI\Container;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
+require_once '../../vendor/jasig/phpcas/source/CAS.php';
 
 $prod = getenv("VOLRPI_PROD") != FALSE;
 
@@ -37,47 +38,51 @@ $container->set('view', function () {
     ]);
 });
 
+// CAS Connection information
+phpCAS::client(CAS_VERSION_2_0, 'cas-auth.rpi.edu/cas', 443, '');
+// Currently does not check CA certificate, need to fix later
+// phpCAS::setCasServerCACert($cas_server_ca_cert_path);
+phpCAS::setNoCasServerValidation();
+
+// Return username if logged in, empty string otherwise
+function getUsername(){
+  $username = '';
+  if(phpCAS::isAuthenticated()){
+    $username = phpCAS::getUser();
+  }
+  return strtolower($username);
+}
+
 // The handler for the main index page
 $app->get('/', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'index.html', []);
+   return $this->get('view')->render($response, 'index.html', ['username' => getUsername()]);
 })->setName('index');
 
 // The handler for the events page
 $app->get('/events', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'events.html', []);
+   return $this->get('view')->render($response, 'events.html', ['username' => getUsername()]);
 })->setName('events');
 
 // The handler for the organizations page
 $app->get('/organizations', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'organizations.html', []);
+   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername()]);
 })->setName('organizations');
 
 // The handler for the leaderboard page
 $app->get('/leaderboard', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'leaderboard.html', []);
+   return $this->get('view')->render($response, 'leaderboard.html', ['username' => getUsername()]);
 })->setName('leaderboard');
 
-// Login button
+// Login functionality
 $app->get('/login', function (Request $request, Response $response, array $args) {
-
-   require_once '../../vendor/jasig/phpcas/source/CAS.php';
-   phpCAS::setDebug("debugging.txt");
-   phpCAS::client(CAS_VERSION_2_0, 'cas-auth.rpi.edu/cas', 443, '');
-
-   // Currently does not check CA certificate, need to fix later
-   // phpCAS::setCasServerCACert($cas_server_ca_cert_path);
-   phpCAS::setNoCasServerValidation();
-
-   // Doesn't work yet, will actually log you in when uncommented/fixed
-   // phpCAS::forceAuthentication();
-
-   // logout if desired
-   if (isset($_REQUEST['logout'])) {
-     phpCAS::logout();
-   }
-
+   phpCAS::forceAuthentication();
    return $response->withHeader('Location', '/')->withStatus(301);
 })->setName('login');
+
+// Logout functionality
+$app->get('/logout', function (Request $request, Response $response, array $args) {
+   phpCAS::logout();
+})->setName('logout');
 
 
 // Run the application

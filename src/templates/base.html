@@ -13,7 +13,11 @@
       <a href="/organizations">Organizations</a>
       <a href="/leaderboard">Leaderboard</a>
       <span>
+        {% if username %}
+        <a href="/logout">{{username}}</a>
+        {% else %}
         <a href="/login">Log In</a>
+        {% endif %}
       </span>
     </header>
     <div class="container">
