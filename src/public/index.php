@@ -57,6 +57,29 @@ $app->get('/leaderboard', function (Request $request, Response $response, array 
    return $this->get('view')->render($response, 'leaderboard.html', []);
 })->setName('leaderboard');
 
+// Login button
+$app->get('/login', function (Request $request, Response $response, array $args) {
+
+   require_once '../../vendor/jasig/phpcas/source/CAS.php';
+   phpCAS::setDebug("debugging.txt");
+   phpCAS::client(CAS_VERSION_2_0, 'cas-auth.rpi.edu/cas', 443, '');
+
+   // Currently does not check CA certificate, need to fix later
+   // phpCAS::setCasServerCACert($cas_server_ca_cert_path);
+   phpCAS::setNoCasServerValidation();
+
+   // Doesn't work yet, will actually log you in when uncommented/fixed
+   // phpCAS::forceAuthentication();
+
+   // logout if desired
+   if (isset($_REQUEST['logout'])) {
+     phpCAS::logout();
+   }
+
+   return $response->withHeader('Location', '/')->withStatus(301);
+})->setName('login');
+
+
 // Run the application
 $app->run();
 
