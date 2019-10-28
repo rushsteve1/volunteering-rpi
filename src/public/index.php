@@ -7,8 +7,6 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
 require_once '../../vendor/jasig/phpcas/source/CAS.php';
 
-$prod = getenv("VOLRPI_PROD") != FALSE;
-
 // Require the Composer autoload file to load the dependencies
 require __DIR__ . '/../../vendor/autoload.php';
 
@@ -33,9 +31,10 @@ $app->addErrorMiddleware(true, true, true); // Must go last
 // Register twig-view component on container
 // This sets up the templating engine so that we can use it later
 $container->set('view', function () {
-    return new \Slim\Views\Twig(TEMPLATE_DIR, [
-        'cache' => $prod ? CACHE_DIR : false
-    ]);
+   $prod = getenv("VOLRPI_PROD") != FALSE;
+   return new \Slim\Views\Twig(TEMPLATE_DIR, [
+      'cache' => $prod ? CACHE_DIR : false
+   ]);
 });
 
 // CAS Connection information
