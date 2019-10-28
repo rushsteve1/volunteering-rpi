@@ -57,11 +57,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
    return $this->get('view')->render($response, 'index.html', ['username' => getUsername()]);
 })->setName('index');
 
-// The handler for the events page
-$app->get('/events', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'events.html', ['username' => getUsername()]);
-})->setName('events');
-
 // The handler for the organizations page
 $app->get('/organizations', function (Request $request, Response $response, array $args) {
    return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername()]);
