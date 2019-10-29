@@ -78,6 +78,11 @@ $app->get('/logout', function (Request $request, Response $response, array $args
    phpCAS::logout();
 })->setName('logout');
 
+// The handler for the user page
+$app->get('/user/{username}', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'user.html', ['username' => getUsername()]);
+})->setName('user');
+
 
 // Run the application
 $app->run();

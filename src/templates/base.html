@@ -14,7 +14,7 @@
       <a href="/leaderboard">Leaderboard</a>
       <span>
         {% if username %}
-        <a href="/logout">{{username}}</a>
+        <a href="/user/{{username}}">{{username}}</a>
         {% else %}
         <a href="/login">Log In</a>
         {% endif %}
