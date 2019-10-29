@@ -79,8 +79,8 @@ $app->get('/logout', function (Request $request, Response $response, array $args
 })->setName('logout');
 
 // The handler for the user page
-$app->get('/user/{username}', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'user.html', ['username' => getUsername()]);
+$app->get('/user/{user}', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'user.html', ['username' => getUsername(), 'user' => $args['user']]);
 })->setName('user');
 
 
