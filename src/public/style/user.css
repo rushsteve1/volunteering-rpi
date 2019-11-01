@@ -1,28 +1,23 @@
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+  background-image: url("cool-background.png")
+}
 
+#mainBlock {
+  width: 90%;
+  float: center;
+  align: center;
+  padding: 30px;
+  color: white;
+  /* background-color: rgb(255,192,203); */
+}
+h1 {
+  padding-left: 30px;
+}
 
 .user {
-  color: white;
-  border: 3px solid black;
-  padding:100px;
-  background-image: linear-gradient(141deg, #bbf95a 0%, #03ffcd 51%, #00E2FF 75%)
-}
-
-#name {
-  font-weight: bold;
-  font-size: 40px;
-  padding-top: 50px;
-}
-
-.about {
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 50px;
-  height: 200px;
-
-}
-
-
-
-.about span{
-  display: inline-block;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding-left: 30px;
 }
