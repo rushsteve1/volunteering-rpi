@@ -11,14 +11,16 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Volunteering <small>@</small> RPI</a>
+        <a class="navbar-brand " href="#">Volunteering <small>@</small> RPI</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/organizations">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/leaderboard">Leaderboard</a>
+            </li>
+        </ul>
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Organizations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Leaderboard</a>
-          </li>
           <li class="nav-item active">
             {% if username %}
             <a class="nav-link" href="/user/{{username}}">{{username}}</a>
@@ -26,7 +28,6 @@
             <a class="nav-link" href="/login">Log In</a>
             {% endif %}
           </li>
-
         </ul>
       </nav>
 
