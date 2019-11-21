@@ -16,11 +16,13 @@ h1 {
   padding-left: 30px;
 }
 
-.user {
-  border: 3px solid white;
+.column {
+  /* border: 3px solid white;
   display:flex;
   border-radius: 10px;
-  padding-left: 30px;
+  padding-left: 30px; */
+  float:left;
+  width: 25%;
 }
 
 h2 {
