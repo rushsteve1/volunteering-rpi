@@ -6,6 +6,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
 require_once '../vendor/jasig/phpcas/source/CAS.php';
+require_once "./queries.php";
 
 // Require the Composer autoload file to load the dependencies
 require __DIR__ . '/../vendor/autoload.php';
@@ -63,7 +64,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 // The handler for the organizations page
 $app->get('/organizations', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername(), 'organizations' => select_orgs()]);
 })->setName('organizations');
 
 // The handler for the leaderboard page
