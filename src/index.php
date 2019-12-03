@@ -59,17 +59,29 @@ function getUsername(){
 
 // The handler for the main index page
 $app->get('/', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'index.html', ['username' => getUsername(), "events" => select_events()]);
+   return $this->get('view')->render($response, 'index.html',
+   [
+      'username' => getUsername(),
+      "events" => select_events()
+   ]);
 })->setName('index');
 
 // The handler for the organizations page
 $app->get('/organizations', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername(), 'organizations' => select_orgs()]);
+   return $this->get('view')->render($response, 'organizations.html', 
+   [
+      'username' => getUsername(), 
+      'organizations' => select_orgs()
+   ]);
 })->setName('organizations');
 
 // The handler for the leaderboard page
 $app->get('/leaderboard', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'leaderboard.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'leaderboard.html',
+   [
+      'username' => getUsername(),
+      "users" => select_leaderboard()
+   ]);
 })->setName('leaderboard');
 
 // Login functionality
@@ -85,7 +97,11 @@ $app->get('/logout', function (Request $request, Response $response, array $args
 
 // The handler for the user page
 $app->get('/user/{user}', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'user.html', ['username' => getUsername(), 'user' => $args['user']]);
+   return $this->get('view')->render($response, 'user.html',
+   [
+      'username' => getUsername(),
+      'user' => $args['user']
+   ]);
 })->setName('user');
 
 

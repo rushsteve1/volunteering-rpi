@@ -8,15 +8,13 @@
 <div id = "mainBlock">
 <h1>Leaderboard Page</h1>
 
+{% for user in users %}
 <div class="user">
-  <h2>Mike Wazowski</h2>
-  <p>Hours Volunteered: 25</p>
-  <p>More info: he's green</p>
+  <h2>{{user[1]}}</h2>
+  <p>Hours Volunteered: {{user[3]}}</p>
+  <p>{{user[2]}}</p>
 </div>
-<div class="user">
-  <h2>Flynn Rider</h2>
-  <p>Hours Volunteered: 0</p>
-  <p>More info: he's a criminal</p>
-</div>
+{% endfor %}
+
 </div>
 {% endblock %}

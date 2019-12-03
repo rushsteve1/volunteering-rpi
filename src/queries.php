@@ -47,6 +47,8 @@ $_select_event_users = $conn->prepare("SELECT events.* FROM userevents ue WHERE 
 
 $_insert_userevent = $conn->prepare("INSERT INTO userevent (eventID, rcsID) VALUES (?, ?);");
 
+$_select_leaderboard = $conn->prepare("SELECT * FROM users ORDER BY hours DESC;");
+
 /* === Wrapper Functions === */
 /*
  * These functions provider simpler type-checked
@@ -158,6 +160,13 @@ function add_user_to_event(int $eventID, string $rcsID): bool {
     $_insert_userevent->reset();
     $_insert_userevent->bind_param("is", $eventID, $rcsID);
     return $_insert_userevent->execute();
+}
+
+function select_leaderboard() {    
+    global $_select_leaderboard;
+    $_select_leaderboard->reset();
+    $_select_leaderboard->execute();
+    return $_select_leaderboard->get_result()->fetch_all();
 }
 
 ?>
