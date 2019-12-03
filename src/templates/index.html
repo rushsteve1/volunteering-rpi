@@ -7,22 +7,30 @@
 {% block body %}
 <div id = "mainBlock">
 <!-- How can I greet using the user's RCS id? -->
-<h1>Welcome {{user}}</h1>
+
+<div class="jumbotron text-center">
+  <h1 class="display-4">RPI Volunteering<h1>
+</div>
 
 <!-- <img src="/style/volunteering1.jpeg" class = "img1" width = "600", height = "400" alt="people holding hands"> -->
-<div class="event">
-  <h2>Human Rights Week</h2>
-  <p>Human Rights Group</p>
-  <p>Take advantage of this event to help your peers!</p>
-  <p>November 7th 1:30pm at Lally 102</p>
-</div>
 
-<div class="event">
-  <h2>Name of Event</h2>
-  <p>Organization Name</p>
-  <p>Brief Description</p>
-  <p>Time and Place</p>
-</div>
+<div class="container">
+  <h1>Welcome {{username}}</h1>
+  <div class="row">
+    <div class="col m-5">
+      <h3>Human Rights Week</h3>
+      <p>Human Rights Group</p>
+      <p>Take advantage of this event to help your peers!</p>
+      <p>November 7th 1:30pm at Lally 102</p>
+    </div>
+    <div class="col m-5">
+      <h2>Name of Event</h2>
+      <p>Organization Name</p>
+      <p>Brief Description</p>
+      <p>Time and Place</p>
+    </div>
+  </div>
+<div>
 
 </div>
 
