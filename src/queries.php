@@ -70,11 +70,11 @@ function insert_user(String $rcsID, string $fullname, string $about): bool {
 }
 
 function select_user_by_rcsid(string $rcsID) {
-    global $_select_user_by_rcsid, $_select_users;
+    global $_select_user_by_rcsid;
     $_select_user_by_rcsid->reset();
     $_select_user_by_rcsid->bind_param("s", $rcsID);
-    $_select_users->execute();
-    return $_select_users->get_result()->fetch_assoc();
+    $_select_user_by_rcsid->execute();
+    return $_select_user_by_rcsid->get_result()->fetch_assoc();
 }
 
 function select_events() {

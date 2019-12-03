@@ -100,7 +100,8 @@ $app->get('/user/{user}', function (Request $request, Response $response, array 
    return $this->get('view')->render($response, 'user.html',
    [
       'username' => getUsername(),
-      'user' => $args['user']
+      'user' => $args['user'],
+      'userData' => select_user_by_rcsid($args['user'])
    ]);
 })->setName('user');
 
