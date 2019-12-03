@@ -9,7 +9,7 @@ body, html {
 html {
   font-family: 'Roboto Condensed', sans-serif;
   /*color: white;*/
-  background-image: url("cool-background.png")
+  background-image: url("style/cool-background.png")
 }
 
 #mainBlock {

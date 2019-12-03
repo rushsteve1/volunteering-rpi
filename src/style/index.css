@@ -1,6 +1,4 @@
 
-
-
 .event{
   border: 3px solid white;
   border-radius: 10px;
@@ -9,4 +7,8 @@
 
 .img1 {
   padding-left: 800px;
+}
+
+.jumbotron {
+  background-color: white;
 }
