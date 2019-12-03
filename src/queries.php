@@ -53,7 +53,7 @@ $_insert_userevent = $conn->prepare("INSERT INTO userevent (eventID, rcsID) VALU
  * interfaces to the above SQL queries.
  */
 
-function select_users() {
+function select_users() {    
     global $_select_users;
     $_select_users->reset();
     $_select_users->execute();
@@ -79,7 +79,7 @@ function select_events() {
     global $_select_events;
     $_select_events->reset();
     $_select_events->execute();
-    return $_select_events()->get_result()->fetch_all();
+    return $_select_events->get_result()->fetch_all();
 }
 
 function insert_event(string $name, int $orgID, string $description, string $location, int $occupancy, int $duration, string $dateTime): bool {

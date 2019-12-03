@@ -59,7 +59,7 @@ function getUsername(){
 
 // The handler for the main index page
 $app->get('/', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'index.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'index.html', ['username' => getUsername(), "events" => select_events()]);
 })->setName('index');
 
 // The handler for the organizations page
