@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2019 at 06:54 PM
+-- Generation Time: Dec 03, 2019 at 07:21 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -44,7 +44,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `eventName`, `orgID`, `description`, `location`, `occupancy`, `eventDuration`, `eventDate`) VALUES
-(1, 'CircleK Annual Food drive', 1, 'Come help us bring food to a food kitchen!', 'Troy, New York', 30, 2, '2019-11-25 10:22:00');
+(1, 'CircleK Annual Food drive', 1, 'Come help us bring food to a food kitchen!', 'Troy, New York', 30, 2, '2019-11-25 10:22:00'),
+(2, 'RPI Ambulance Info Session', 2, 'Come learn more about joining RPI Ambulance!', 'RPI Union 15th Street Lobby', 50, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -57,17 +58,18 @@ CREATE TABLE `organizations` (
   `orgName` varchar(100) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `website` varchar(100) DEFAULT NULL,
-  `adminID` varchar(20) DEFAULT NULL
+  `adminID` varchar(20) DEFAULT NULL,
+  `imageURL` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `organizations`
 --
 
-INSERT INTO `organizations` (`id`, `orgName`, `description`, `website`, `adminID`) VALUES
-(1, 'CircleK International', 'An RPI Volunteer Organiztaion', 'https://union.rpi.edu/clubs/service/216-circle-k-international', 'lazare2'),
-(2, 'RPI Ambulance', 'Provides emergency medical services to the Rensselaer community, and provides educational programs in the field of emergency medicine for members of the organization and the Rensselaer community.', 'https://rpiambulance.com/', 'mahmoy'),
-(4, 'Student Senate', 'We worth with students and administrators to improve life around campus!', 'https://sg.rpi.edu/about/senate', 'lettkm');
+INSERT INTO `organizations` (`id`, `orgName`, `description`, `website`, `adminID`, `imageURL`) VALUES
+(1, 'CircleK International', 'An RPI Volunteer Organiztaion', 'https://union.rpi.edu/clubs/service/216-circle-k-international', 'lazare2', NULL),
+(2, 'RPI Ambulance', 'Provides emergency medical services to the Rensselaer community, and provides educational programs in the field of emergency medicine for members of the organization and the Rensselaer community.', 'https://rpiambulance.com/', 'mahmoy', NULL),
+(4, 'Student Senate', 'We worth with students and administrators to improve life around campus!', 'https://sg.rpi.edu/about/senate', 'lettkm', NULL);
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,8 @@ CREATE TABLE `userevent` (
 --
 
 INSERT INTO `userevent` (`eventID`, `rcsID`) VALUES
-(1, 'lazare2');
+(1, 'lazare2'),
+(2, 'lettkm');
 
 -- --------------------------------------------------------
 
@@ -114,18 +117,19 @@ INSERT INTO `userorganization` (`orgID`, `rcsID`) VALUES
 CREATE TABLE `users` (
   `rcsID` varchar(20) NOT NULL,
   `fullName` varchar(100) DEFAULT NULL,
-  `about` varchar(500) DEFAULT NULL
+  `about` varchar(500) DEFAULT NULL,
+  `hours` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`rcsID`, `fullName`, `about`) VALUES
-('lazare2', 'Evan Lazaro', 'I enjoy volunteering!'),
-('lettkm', 'Meagan Lettko', 'I enjoy student government!'),
-('mahmoy', 'Yaseen Mahmoud', 'Horns down brother!'),
-('smithj4', 'John Smith', 'Here for the fun!');
+INSERT INTO `users` (`rcsID`, `fullName`, `about`, `hours`) VALUES
+('lazare2', 'Evan Lazaro', 'I enjoy volunteering!', 10),
+('lettkm', 'Meagan Lettko', 'I enjoy student government!', 5),
+('mahmoy', 'Yaseen Mahmoud', 'Horns down brother!', 0),
+('smithj4', 'John Smith', 'Here for the fun!', 200);
 
 --
 -- Indexes for dumped tables
@@ -173,7 +177,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `organizations`
