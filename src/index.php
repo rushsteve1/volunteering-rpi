@@ -5,15 +5,19 @@ use DI\Container;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
-require_once '../../vendor/jasig/phpcas/source/CAS.php';
+require_once '../vendor/jasig/phpcas/source/CAS.php';
 
 // Require the Composer autoload file to load the dependencies
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+// Once the connection options use a config file (or while testing)
+// you can uncomment this
+// require __DIR__ . '/queries.php';
 
 // Define constants as part of the application
 // These can possibly be replaced by a config file
-define('TEMPLATE_DIR', '../templates/');
-define('CACHE_DIR', '../../cache/');
+define('TEMPLATE_DIR', 'templates/');
+define('CACHE_DIR', '../cache/');
 
 // Create the DI container
 $container = new Container();
