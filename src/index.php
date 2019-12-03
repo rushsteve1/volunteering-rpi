@@ -64,7 +64,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 // The handler for the organizations page
 $app->get('/organizations', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername(), 'organizations' => select_orgs()]);
 })->setName('organizations');
 
 // The handler for the leaderboard page
