@@ -51,6 +51,8 @@ $_select_leaderboard = $conn->prepare("SELECT * FROM users ORDER BY hours DESC;"
 
 $_select_org_by_id = $conn->prepare("SELECT * FROM organizations WHERE id=?");
 
+$_select_event_by_id = $conn->prepare("SELECT * FROM events WHERE id=?");
+
 /* === Wrapper Functions === */
 /*
  * These functions provider simpler type-checked
@@ -177,6 +179,14 @@ function select_org_by_id(string $id) {
     $_select_org_by_id->bind_param("s", $id);
     $_select_org_by_id->execute();
     return $_select_org_by_id->get_result()->fetch_assoc();
+}
+
+function select_event_by_id(string $id) {
+    global $_select_event_by_id;
+    $_select_event_by_id->reset();
+    $_select_event_by_id->bind_param("s", $id);
+    $_select_event_by_id->execute();
+    return $_select_event_by_id->get_result()->fetch_assoc();
 }
 
 ?>

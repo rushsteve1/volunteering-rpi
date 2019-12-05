@@ -115,6 +115,15 @@ $app->get('/org/{orgid}', function (Request $request, Response $response, array 
    ]);
 })->setName('org');
 
+// The handler for the event page
+$app->get('/event/{eventid}', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'event.html',
+   [
+      'username' => getUsername(),
+      'eventid' => $args['eventid'],
+      'eventData' => select_event_by_id($args['eventid'])
+   ]);
+})->setName('event');
 
 // Run the application
 $app->run();
