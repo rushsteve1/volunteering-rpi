@@ -14,18 +14,23 @@
 <!-- <img src="/style/volunteering1.jpeg" class = "img1" width = "600", height = "400" alt="people holding hands"> -->
 
 <div class="container">
-  <h1>Welcome {{username}}</h1>
-  <div class="row">
-    {% for event in events %}
+  <h1 class="text-danger" >Welcome {{username}}</h1>
+
+  <div class="list-group event">
     <div class="col m-5">
-      <h3>{{event[1]}}</h3> <!-- Event name -->
-      <p>{{event[2]}}</p> <!-- Organization  TODO: Turn ordid into org name -->
-      <p>{{event[3]}}</p>  <!-- Description --> 
-      <p>{{event[4]}} at {{event[6]}}</p>  <!-- Time and Location -->
-    </div>
+    <h2 class="text-primary" >Events</h2>
+    {% for event in events %}
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1 text-info">{{event[1]}}</h5>
+          <small class="text-success">{{event[7]}}</small>
+        </div>
+        <p class="mb-1">{{event[3]}}</p>
+        <small>@{{event[4]}}</small>
+      </a>
     {% endfor %}
+    </div>
   </div>
-<div>
 
 </div>
 

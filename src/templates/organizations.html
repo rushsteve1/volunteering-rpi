@@ -6,12 +6,14 @@
 
 {% block body %}
 <div id = "mainBlock">
-<h1>Organizations Page</h1>
+<div class="jumbotron text-center">
+  <h2 class="display-4 text-danger">Organizations<h2>
+</div>
 
 {% for org in organizations %}
 <div class="jumbotron text-center">
   <h3 class="text-danger">{{org[1]}}</h3>
-  <p>President: {{org[4]}}</p> 
+  <p>President: {{org[4]}}</p>
   <!-- TODO: Turn Admin username into name -->
   <p>{{org[2]}}</p>
 </div>
