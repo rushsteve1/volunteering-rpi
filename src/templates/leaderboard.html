@@ -10,7 +10,7 @@
 
 {% for user in users %}
 <div class="user">
-  <h2>{{user[1]}}</h2>
+  <h2><a href="/user/{{user[0]}}">{{user[1]}}</a></h2>
   <p>Hours Volunteered: {{user[3]}}</p>
   <p>{{user[2]}}</p>
 </div>
