@@ -10,10 +10,26 @@ body{
   background-attachment: fixed;
 }
 
+
+h2 {
+  width: 30%;
+}
+
+p {
+  width: 20%;
+}
+
 .jumbotron {
   background-color: white;
 }
 
 .event:first {
   background: blue;
+}
+
+.user, .organization {
+  border: 3px solid white;
+  background-color: white;
+  border-radius: 2em;
+  padding-left: 3em;
 }
