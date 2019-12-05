@@ -1,0 +1,14 @@
+
+.event{
+  border: 3px solid white;
+  border-radius: 10px;
+  padding-left: 30px;
+}
+
+.img1 {
+  padding-left: 800px;
+}
+
+.jumbotron {
+  background-color: white;
+}

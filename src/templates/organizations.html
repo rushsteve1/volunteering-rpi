@@ -8,16 +8,15 @@
 <div id = "mainBlock">
 <h1>Organizations Page</h1>
 
-<div class="organization">
-  <h2>RPI Ambulance</h2>
-  <p>President</p>
-  <p>Provides emergency medical services to the Rensselaer community, and provides educational programs in the field of emergency medicine for members of the organization and the Rensselaer community.</p>
+{% for org in organizations %}
+<div class="jumbotron text-center">
+  <h3 class="text-danger">{{org[1]}}</h3>
+  <p>President: {{org[4]}}</p> 
+  <!-- TODO: Turn Admin username into name -->
+  <p>{{org[2]}}</p>
 </div>
-<div class="organization">
-  <h2>Global Medical Brigades</h2>
-  <p>President</p>
-  <p>Travels abroad to provide relief to an underserved community in Panama, Honduras, Nicaragua, or Ghana. Depending on the interest, we can choose to focus on medical, dental, public health, environmental, or water brigades.</p>
-</div>
+{% endfor %}
+
 </div>
 
 {% endblock %}

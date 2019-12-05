@@ -5,15 +5,20 @@ use DI\Container;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
-require_once '../../vendor/jasig/phpcas/source/CAS.php';
+require_once '../vendor/jasig/phpcas/source/CAS.php';
+require_once "./queries.php";
 
 // Require the Composer autoload file to load the dependencies
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+// Once the connection options use a config file (or while testing)
+// you can uncomment this
+// require __DIR__ . '/queries.php';
 
 // Define constants as part of the application
 // These can possibly be replaced by a config file
-define('TEMPLATE_DIR', '../templates/');
-define('CACHE_DIR', '../../cache/');
+define('TEMPLATE_DIR', 'templates/');
+define('CACHE_DIR', '../cache/');
 
 // Create the DI container
 $container = new Container();
@@ -54,17 +59,29 @@ function getUsername(){
 
 // The handler for the main index page
 $app->get('/', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'index.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'index.html',
+   [
+      'username' => getUsername(),
+      "events" => select_events()
+   ]);
 })->setName('index');
 
 // The handler for the organizations page
 $app->get('/organizations', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'organizations.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'organizations.html', 
+   [
+      'username' => getUsername(), 
+      'organizations' => select_orgs()
+   ]);
 })->setName('organizations');
 
 // The handler for the leaderboard page
 $app->get('/leaderboard', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'leaderboard.html', ['username' => getUsername()]);
+   return $this->get('view')->render($response, 'leaderboard.html',
+   [
+      'username' => getUsername(),
+      "users" => select_leaderboard()
+   ]);
 })->setName('leaderboard');
 
 // Login functionality
@@ -80,7 +97,12 @@ $app->get('/logout', function (Request $request, Response $response, array $args
 
 // The handler for the user page
 $app->get('/user/{user}', function (Request $request, Response $response, array $args) {
-   return $this->get('view')->render($response, 'user.html', ['username' => getUsername(), 'user' => $args['user']]);
+   return $this->get('view')->render($response, 'user.html',
+   [
+      'username' => getUsername(),
+      'user' => $args['user'],
+      'userData' => select_user_by_rcsid($args['user'])
+   ]);
 })->setName('user');
 
 

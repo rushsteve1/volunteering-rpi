@@ -9,18 +9,19 @@
 
 <h1>User Page</h1>
 
+{% if userData|length > 0 %}
 <div class="user">
-  <h2>{{user}}'s page</h2>
-  <div id="name">
-    <p>Name:</p>
-  </div>
+  <h2>{{userData.fullName}}'s page</h2> 
   <div class="about">
-    <span >About me:</span>
-    <span>An RPI student taking Websys. </span>
+    <p >About me: {{userData.about}} </p>
+    <p> Hours Volunteered: {{userData.hours}} </p> <!-- Hours volunteered -->
   </div>
 </div>
 </br>
 <button><a href="/logout">Logout</a></button>
 </div>
+{% else %}
+<h2>User {{user}} not found.</h2>
+{% endif %}
 
 {% endblock %}

@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="/style/base.css-->
+    <style>
+      body{
+        background-image: url("/style/rpi.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+    </style>
     {% block stylesheet %}{% endblock %}
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand " href="#">Volunteering <small>@</small> RPI</a>
+      <nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+        <a class="navbar-brand " href="/">Volunteering <small>@</small> RPI</a>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="/organizations">Organizations</a>
@@ -33,6 +43,7 @@
 
     </header>
     <div class="container">
+      <br><br>
       {% block body %}{% endblock %}
     </div>
   </body>

@@ -6,23 +6,26 @@
 
 {% block body %}
 <div id = "mainBlock">
-<!-- How can I greet using the user's RCS id? -->
-<h1>Welcome {{user}}</h1>
+
+<div class="jumbotron text-center">
+  <h2 class="display-4 text-danger">RPI Volunteering<h2>
+</div>
 
 <!-- <img src="/style/volunteering1.jpeg" class = "img1" width = "600", height = "400" alt="people holding hands"> -->
-<div class="event">
-  <h2>Human Rights Week</h2>
-  <p>Human Rights Group</p>
-  <p>Take advantage of this event to help your peers!</p>
-  <p>November 7th 1:30pm at Lally 102</p>
-</div>
 
-<div class="event">
-  <h2>Name of Event</h2>
-  <p>Organization Name</p>
-  <p>Brief Description</p>
-  <p>Time and Place</p>
-</div>
+<div class="container">
+  <h1>Welcome {{username}}</h1>
+  <div class="row">
+    {% for event in events %}
+    <div class="col m-5">
+      <h3>{{event[1]}}</h3> <!-- Event name -->
+      <p>{{event[2]}}</p> <!-- Organization  TODO: Turn ordid into org name -->
+      <p>{{event[3]}}</p>  <!-- Description --> 
+      <p>{{event[4]}} at {{event[6]}}</p>  <!-- Time and Location -->
+    </div>
+    {% endfor %}
+  </div>
+<div>
 
 </div>
 
