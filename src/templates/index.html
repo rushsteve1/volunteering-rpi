@@ -2,8 +2,6 @@
 
 {% block title %}Welcome{% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="/style/index.css">{% endblock %}
-
 {% block body %}
 <div id = "mainBlock">
 <div class="center">
@@ -21,7 +19,7 @@
     <div class="col m-5">
     <h2 class="text-primary" >Events</h2>
     {% for event in events %}
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+      <a href="/event/{{event[0]}}" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1 text-info">{{event[1]}}</h5>
           <small class="text-success">{{event[7]}}</small>

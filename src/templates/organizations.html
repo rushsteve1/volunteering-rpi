@@ -2,8 +2,6 @@
 
 {% block title %}Organizations{% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="/style/organizations.css">{% endblock %}
-
 {% block body %}
 <div id = "mainBlock">
 <div class="center">
@@ -14,7 +12,7 @@
 
 {% for org in organizations %}
 <div class="jumbotron text-center">
-  <h3 class="text-danger">{{org[1]}}</h3>
+  <h3 class="text-danger"><a href="/org/{{org[0]}}">{{org[1]}}</a></h3>
   <p>President: {{org[4]}}</p>
   <!-- TODO: Turn Admin username into name -->
   <p>{{org[2]}}</p>

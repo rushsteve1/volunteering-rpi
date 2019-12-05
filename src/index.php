@@ -42,6 +42,12 @@ $container->set('view', function () {
    ]);
 });
 
+$container->set('notFoundHandler', function($ctx) {
+  return function(Request $request, Response $response) use ($ctx) {
+    return $this->get('view')->render($response->withStatus(404), '404.html');
+  };
+});
+
 // CAS Connection information
 phpCAS::client(CAS_VERSION_2_0, 'cas-auth.rpi.edu/cas', 443, '');
 // Currently does not check CA certificate, need to fix later
@@ -87,6 +93,10 @@ $app->get('/leaderboard', function (Request $request, Response $response, array 
 // Login functionality
 $app->get('/login', function (Request $request, Response $response, array $args) {
    phpCAS::forceAuthentication();
+   $username = getUsername();
+   if (!select_user_by_rcs_id($username)) {
+     insert_user($username, $username, $username);
+   }
    return $response->withHeader('Location', '/')->withStatus(301);
 })->setName('login');
 
