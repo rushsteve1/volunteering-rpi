@@ -17,3 +17,8 @@ body{
 .event:first {
   background: blue;
 }
+
+.center {
+    display:flex;
+    justify-content: center;
+}
