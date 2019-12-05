@@ -1,17 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Organization - {{org}}{% endblock %}
+{% block title %}{{orgData.orgName}}{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="/style/organizations.css">{% endblock %}
 
 {% block body %}
-<h1>Organizations Page</h1>
+<h1>Org Page</h1>
 
-<div class="organization">
-  <h2>Name of Organization: {{name}}</h2>
-  <p>President - {{admin}}</p>
-  <p>About - {{description}}</p>
-  <p>Website - {{website}}</p>
+{% if orgData|length > 0 %}
+<div class="user">
+  <img src="{{orgData.imageURL}}"/>
+  <h2>{{orgData.orgName}}'s page</h2> 
+  <div class="about">
+    <p>Description: {{orgData.description}} </p>
+    <p>Website: {{orgData.website}}</p>
+    <p>Admin: {{orgData.adminID}}</p>
+  </div>
 </div>
+</br>
+
+{% else %}
+<h2>Organization {{orgid}} not found.</h2>
+{% endif %}
+
 
 {% endblock %}
