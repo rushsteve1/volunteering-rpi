@@ -105,6 +105,16 @@ $app->get('/user/{user}', function (Request $request, Response $response, array 
    ]);
 })->setName('user');
 
+// The handler for the org page
+$app->get('/org/{orgid}', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'org.html',
+   [
+      'username' => getUsername(),
+      'orgid' => $args['orgid'],
+      'orgData' => select_org_by_id($args['orgid'])
+   ]);
+})->setName('org');
+
 
 // Run the application
 $app->run();
