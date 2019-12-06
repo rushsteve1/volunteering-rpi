@@ -19,6 +19,7 @@
   <div class="list-group event">
     <div class="col m-5">
     <h2 class="font-italic text-danger" >Events</h2>
+    <a href="/create-event" class="btn btn-primary active" role="button" aria-pressed="true">Create Event</a>
     {% for event in events %}
       <div class="bd-callout bd-callout-info">
         <a href="/event/{{event[0]}}">

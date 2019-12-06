@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<div class="center">
+  <div class="jumbotron text-center w-50">
+    <h2>Create Event<h2>
+  </div>
+</div>
+
+<form method="post">
+  <p>Name: <input type="text" name="name" required/></p>
+  <p>Description: <input type="text" name="description" required/></p>
+  <p>Location: <input type="text" name="location" required/></p>
+  <p> Organization: 
+    <select name="org">
+      {% for org in orgData %}
+        <option value="{{org[0]}}">{{org[1]}}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>Occupancy: <input type="number" name="occupancy" value=0 required/></p>
+  <p>Duration (in hours): <input type="number" name="duration" value=0 required/></p>
+  <p>Date: <input type="datetime-local" name="date" required/></p>
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

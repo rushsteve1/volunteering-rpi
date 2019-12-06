@@ -139,6 +139,22 @@ $app->get('/event/{eventid}', function (Request $request, Response $response, ar
    ]);
 })->setName('event');
 
+// The handler for the event creation page
+$app->get('/create-event', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'create-event.html',
+   [
+      'username' => getUsername(),
+      'orgData' => select_orgs()
+   ]);
+})->setName('event');
+
+// The handler for the event submission
+$app->post('/create-event', function (Request $request, Response $response, array $args) {
+   $data = $request->getParsedBody();
+   insert_event($data["name"], $data["org"], $data["description"], $data["location"], $data["occupancy"], $data["duration"], $data["date"]);
+   return $response->withHeader('Location', '/')->withStatus(301);
+})->setName('event');
+
 // Run the application
 $app->run();
 
