@@ -28,6 +28,10 @@
       <small>@{{event[4]}}</small>
     </a>
   {% endfor %}
+  {% if event|length == 0 %}
+  <p>No events found.</p>
+  {% endif %}
+
   </div>
 </div>
 
