@@ -1,7 +1,7 @@
 <?php
 
 // TODO replace these with a config file or similar
-$servername = "";
+$servername="";
 $username = "";
 $password = "";
 $dbname = "volunteering-rpi";
@@ -57,7 +57,7 @@ $_select_org_by_id = $conn->prepare("SELECT * FROM organizations WHERE id=?");
  * interfaces to the above SQL queries.
  */
 
-function select_users() {    
+function select_users() {
     global $_select_users;
     $_select_users->reset();
     $_select_users->execute();
@@ -164,7 +164,7 @@ function add_user_to_event(int $eventID, string $rcsID): bool {
     return $_insert_userevent->execute();
 }
 
-function select_leaderboard() {    
+function select_leaderboard() {
     global $_select_leaderboard;
     $_select_leaderboard->reset();
     $_select_leaderboard->execute();
