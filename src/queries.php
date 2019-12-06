@@ -1,7 +1,7 @@
 <?php
 
 // TODO replace these with a config file or similar
-$servername = "";
+$servername="";
 $username = "";
 $password = "";
 $dbname = "volunteering-rpi";
@@ -23,13 +23,13 @@ $_select_users = $conn->prepare("SELECT * FROM users;");
 
 $_insert_user = $conn->prepare("INSERT INTO users (rcsID, fullname, about) VALUES (?, ?, ?);");
 
-$_select_user_by_rcsid = $conn->prepare("SELECT * FROM users WHERE rcsid=?");
+$_select_user_by_rcsid = $conn->prepare("SELECT * FROM users WHERE rcsid=?;");
 
 $_select_events = $conn->prepare("SELECT * FROM events ORDER BY eventdate DESC;");
 
 $_insert_event = $conn->prepare("INSERT INTO events (eventname, orgID, description, location, occupancy, eventDuration, eventDate) VALUES (?, ?, ?, ?, ?, ?, ?);");
 
-$_select_events_by_org = $conn->prepare("SELECT * FROM events WHERE orgID=? ORDER BY eventdata DESC;");
+$_select_events_by_org = $conn->prepare("SELECT * FROM events WHERE orgID=? ORDER BY eventDate DESC;");
 
 $_select_orgs = $conn->prepare("SELECT * FROM organizations;");
 
@@ -43,7 +43,7 @@ $_insert_userorg = $conn->prepare("INSERT INTO userorganization (orgID, rcsID) V
 
 $_select_event_users = $conn->prepare("SELECT users.* FROM userevents ue WHERE ue.eventID=? INNER JOIN users ON ue.rcsID=user.rcsID;");
 
-$_select_event_users = $conn->prepare("SELECT events.* FROM userevents ue WHERE ue.rcsID=? INNER JOIN events ON ue.eventID=events..event;");
+$_select_user_events = $conn->prepare("SELECT events.* FROM userevents ue WHERE ue.rcsID=? INNER JOIN events ON ue.eventID=events..event;");
 
 $_insert_userevent = $conn->prepare("INSERT INTO userevent (eventID, rcsID) VALUES (?, ?);");
 
@@ -59,7 +59,7 @@ $_select_event_by_id = $conn->prepare("SELECT * FROM events WHERE id=?");
  * interfaces to the above SQL queries.
  */
 
-function select_users() {    
+function select_users() {
     global $_select_users;
     $_select_users->reset();
     $_select_users->execute();
@@ -166,7 +166,7 @@ function add_user_to_event(int $eventID, string $rcsID): bool {
     return $_insert_userevent->execute();
 }
 
-function select_leaderboard() {    
+function select_leaderboard() {
     global $_select_leaderboard;
     $_select_leaderboard->reset();
     $_select_leaderboard->execute();

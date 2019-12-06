@@ -46,6 +46,10 @@ CREATE TABLE `events` (
 INSERT INTO `events` (`id`, `eventName`, `orgID`, `description`, `location`, `occupancy`, `eventDuration`, `eventDate`) VALUES
 (1, 'CircleK Annual Food drive', 1, 'Come help us bring food to a food kitchen!', 'Troy, New York', 30, 2, '2019-11-25 10:22:00'),
 (2, 'RPI Ambulance Info Session', 2, 'Come learn more about joining RPI Ambulance!', 'RPI Union 15th Street Lobby', 50, 3, NULL);
+(3, 'Biomedical Engineering Seminar', 3, 'Interstitial fluid flow in the brain: contributions to disease', 'Jonsson Engineering Center 3117 JEC', 50, 3, '2019-05-19 1:30:00');
+(4, 'Calling All Crafters, Bakers, and Artists!', 4, 'The United Way is once again holding the Community Fair and Bake Sale in conjunction with Procurement’s Supplier Showcase!', 'Armory', 50, 3, '2019-05-19 11:00:00');
+(5, 'Feature Webinar Invitation: Data Analytics, Machine Learning & AI', 5, 'Dean Aric Krause will be hosting a feature webinar to review Rensselaers digitally delivered, project-based graduate certificate programs in Business Intelligence and Machine Learning & AI.', 'Online', 50, .5, '2019-06-19 12:00:00');
+(6, 'Troy Compost seeks Volunteers', 6, 'Troy Compost has been organizing a number of big composting initiatives in Troy, such as the Farmers Market foodscraps collection, a project that diverts food waste from landfills to get composted at local farms instead.', 'Campus-wide', 50, 4, '2019-25-19 8:00:00');
 
 -- --------------------------------------------------------
 
@@ -67,9 +71,11 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `orgName`, `description`, `website`, `adminID`, `imageURL`) VALUES
-(1, 'CircleK International', 'An RPI Volunteer Organiztaion', 'https://union.rpi.edu/clubs/service/216-circle-k-international', 'lazare2', NULL),
+(1, 'CircleK International', 'An RPI Volunteer Organization', 'https://union.rpi.edu/clubs/service/216-circle-k-international', 'lazare2', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D44573412594&imgrefurl=https%3A%2F%2Fwww.facebook.com%2FRPICircleK%2F&docid=S8VMArsd6MJVGM&tbnid=prAosV3IAm_QpM%3A&vet=10ahUKEwiA8a376Z_mAhWEg-AKHcpKDoAQMwhEKAIwAg..i&w=960&h=960&bih=744&biw=767&q=circle%20k%20rpi&ved=0ahUKEwiA8a376Z_mAhWEg-AKHcpKDoAQMwhEKAIwAg&iact=mrc&uact=8'),
 (2, 'RPI Ambulance', 'Provides emergency medical services to the Rensselaer community, and provides educational programs in the field of emergency medicine for members of the organization and the Rensselaer community.', 'https://rpiambulance.com/', 'mahmoy', NULL),
-(4, 'Student Senate', 'We worth with students and administrators to improve life around campus!', 'https://sg.rpi.edu/about/senate', 'lettkm', NULL);
+(4, 'Student Senate', 'We work with students and administrators to improve life around campus!', 'https://sg.rpi.edu/about/senate', 'lettkm', NULL);
+(5, 'Web Seminars', 'We work to host webinars!', 'https://sg.rpi.edu/about/senate', '', NULL);
+(6, 'Troy Compost', 'Troy Compost has been organizing a number of big composting initiatives in Troy!', 'http://troycompost.wikispaces.com/Troy+Compost', 'schafe', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,6 +95,12 @@ CREATE TABLE `userevent` (
 INSERT INTO `userevent` (`eventID`, `rcsID`) VALUES
 (1, 'lazare2'),
 (2, 'lettkm');
+(3, 'mahmoy');
+(4, 'smithj4');
+(5, 'suraps3');
+(6, 'liangs5');
+(7, 'vanzys');
+
 
 -- --------------------------------------------------------
 
@@ -130,6 +142,9 @@ INSERT INTO `users` (`rcsID`, `fullName`, `about`, `hours`) VALUES
 ('lettkm', 'Meagan Lettko', 'I enjoy student government!', 5),
 ('mahmoy', 'Yaseen Mahmoud', 'Horns down brother!', 0),
 ('smithj4', 'John Smith', 'Here for the fun!', 200);
+('suraps3', 'Sanjana Surapaneni', 'Live Love Laugh!', 20);
+('liangs5', 'SJ Liang', 'Love to cook!', 2000);
+('vanzys', 'Steven vanZyl', 'Love php!', 300);
 
 --
 -- Indexes for dumped tables
