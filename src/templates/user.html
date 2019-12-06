@@ -4,22 +4,28 @@
 
 {% block body %}
 <div id = "mainBlock">
-
-<h1>User Page</h1>
-
-{% if userData|length > 0 %}
-<div class="user">
-  <h2>{{userData.fullName}}'s page</h2> 
-  <div class="about">
-    <p >About me: {{userData.about}} </p>
-    <p> Hours Volunteered: {{userData.hours}} </p> <!-- Hours volunteered -->
+<div class="center">
+  <div class="jumbotron text-center w-50">
+    <h2 class="text-danger">User Page<h2>
   </div>
 </div>
-</br>
-<button><a href="/logout">Logout</a></button>
+
+<div class="center">
+  {% if userData|length > 0 %}
+  <div class="card">
+    <div class="card-header font-italic text-danger">
+      Rensselaer Polytechnic Institute
+    </div>
+    <div class="card-body">
+      <h2 class="card-title text-primary">{{userData.fullName}}'s page</h2>
+      <h6 class="card-subtitle mb-2 text-muted">{{userData.hours}} Hour Volunteering </h6>
+      <p class="card-text">About me: {{userData.about}} </p>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+  {% else %}
+  <h2>User {{user}} not found.</h2>
+  {% endif %}
 </div>
-{% else %}
-<h2>User {{user}} not found.</h2>
-{% endif %}
 
 {% endblock %}

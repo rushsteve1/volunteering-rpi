@@ -12,11 +12,11 @@
 <div class="center">
   {% if eventData|length > 0 %}
   <div class="card">
-    <div class="card-header">
+    <div class="card-header text-danger">
       Featured
     </div>
     <div class="card-body">
-      <h2 class="card-title">{{eventData.eventName}}</h2>
+      <h2 class="card-title text-info">{{eventData.eventName}}</h2>
       <p class="card-text">{{eventData.description}}</p>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Organization: <a href="/org/{{orgData.id}}">{{orgData.orgName}}</a></li>
