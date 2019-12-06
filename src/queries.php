@@ -29,7 +29,7 @@ $_select_events = $conn->prepare("SELECT * FROM events ORDER BY eventdate DESC;"
 
 $_insert_event = $conn->prepare("INSERT INTO events (eventname, orgID, description, location, occupancy, eventDuration, eventDate) VALUES (?, ?, ?, ?, ?, ?, ?);");
 
-$_select_events_by_org = $conn->prepare("SELECT * FROM events WHERE orgID=? ORDER BY eventdata DESC;");
+$_select_events_by_org = $conn->prepare("SELECT * FROM events WHERE orgID=? ORDER BY eventDate DESC;");
 
 $_select_orgs = $conn->prepare("SELECT * FROM organizations;");
 
@@ -95,10 +95,10 @@ function insert_event(string $name, int $orgID, string $description, string $loc
     return $_insert_event->execute();
 }
 
-function select_events_by_org(int $orgID) {
+function select_events_by_org(string $orgID) {
     global $_select_events_by_org;
     $_select_events_by_org->reset();
-    $_select_events_by_org->bind_param("i", $orgID);
+    $_select_events_by_org->bind_param("s", $orgID);
     $_select_events_by_org->execute();
     return $_select_events_by_org->get_result()->fetch_all();
 }
