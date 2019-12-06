@@ -14,7 +14,10 @@ body{
 
 
 .jumbotron {
-  background-color: white;
+  margin-top: 5rem;
+  background-image: url("/style/bg.jpg");
+  background-size: cover;
+  color:white;
 }
 
 .event:first {
