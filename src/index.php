@@ -93,7 +93,7 @@ $app->get('/leaderboard', function (Request $request, Response $response, array 
 $app->get('/login', function (Request $request, Response $response, array $args) {
    phpCAS::forceAuthentication();
    $username = getUsername();
-   if (!select_user_by_rcs_id($username)) {
+   if (!select_user_by_rcsid($username)) {
      insert_user($username, $username, $username);
    }
    return $response->withHeader('Location', '/')->withStatus(301);
