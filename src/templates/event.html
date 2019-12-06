@@ -4,11 +4,15 @@
 
 
 {% block body %}
-<h1>Event Page</h1>
+<div class="center">
+  <div class="jumbotron text-center w-50">
+    <h2 class="display-4 text-danger">Event Page<h2>
+  </div>
+</div>
 
 {% if eventData|length > 0 %}
 <div class="user">
-  <h2>{{eventData.eventName}}</h2> 
+  <h2>{{eventData.eventName}}</h2>
   <div class="about">
     <p>Description: {{eventData.description}} </p>
     <p>Organization: <a href="/org/{{orgData.id}}">{{orgData.orgName}}</a> </p>
