@@ -6,7 +6,7 @@
 <div id = "mainBlock">
 <div class="center">
   <div class="jumbotron text-center w-50">
-    <h2 class="display-4 text-danger">RPI Volunteering<h2>
+    <h2 class="text-danger">RPI Volunteering<h2>
   </div>
 </div>
 
@@ -20,14 +20,14 @@
     <h2 class="font-italic text-danger" >Events</h2>
     {% for event in events %}
       <div class="bd-callout bd-callout-info">
-      <a href="/event/{{event[0]}}">
-        <div class="d-flex w-100 justify-content-between">
-          <h4 class="mb-1">{{event[1]}}</h4>
-          <small class="text-success">{{event[7]}}</small>
-        </div>
-        <p class="mb-1">{{event[3]}}</p>
-        <small>@{{event[4]}}</small>
-      </a>
+        <a href="/event/{{event[0]}}">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">{{event[1]}}</h4>
+            <small class="text-success">{{event[7]}}</small>
+          </div>
+          <p class="mb-1">{{event[3]}}</p>
+          <small>@{{event[4]}}</small>
+        </a>
       </div>
     {% endfor %}
     </div>

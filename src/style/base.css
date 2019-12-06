@@ -28,6 +28,10 @@ body{
     align-items: center;
 }
 
+.card {
+  width:40rem;
+}
+
 .bd-callout {
     padding: 1.25rem;
     margin-top: 1.25rem;
