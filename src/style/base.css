@@ -1,55 +1,35 @@
 /* Fix the initial padding */
 
-body, html {
-    padding: 0;
-    margin: 0;
-}
-
-
-html {
+body{
   font-family: 'Roboto Condensed', sans-serif;
-  /*color: white;*/
-  background-image: url("style/cool-background.png")
+  background-image: url("/style/rpi.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-#mainBlock {
-  width: 90%;
-  float: center;
-  align: center;
-  padding: 30px;
-  color: white;
-  /* background-color: rgb(255,192,203); */
-}
-h1 {
-  padding-left: 30px;
-}
-/* The header bar */
-header {
-    color: white;
-    background-color: #050505;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    position: sticky;
-    padding: 0 1em;
-
-    box-shadow: 0 0 0.5em black;
+h2 {
+  width: 30%;
 }
 
-header a {
-    color: inherit;
-    text-decoration: none;
-    margin-left: 1em;
+p {
+  width: 20%;
 }
 
-header span a {
-    font-size: 18pt;
+.jumbotron {
+  background-color: white;
 }
 
-/* The container with the page's content */
-.container {
-    padding: 1em;
+.event:first {
+  background: blue;
+}
+
+.user, .organization {
+  border: 3px solid white;
+  background-color: white;
+  border-radius: 2em;
+  padding-left: 3em;
 }

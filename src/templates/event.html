@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Event - {{eventData.eventName}} {% endblock %}
+
+
+{% block body %}
+<h1>Event Page</h1>
+
+{% if eventData|length > 0 %}
+<div class="user">
+  <h2>{{eventData.eventName}}</h2> 
+  <div class="about">
+    <p>Description: {{eventData.description}} </p>
+    <p>Organization: <a href="/org/{{orgData.id}}">{{orgData.orgName}}</a> </p>
+    <p>Location: {{eventData.location}}</p>
+    <p>Duration: {{eventData.eventDuration}} hours</p>
+    <p>Date: {{eventData.eventDate}}</p>
+    <p>Occupancy: {{eventData.occupancy}}</p>
+  </div>
+</div>
+</br>
+
+{% else %}
+<h2>Event {{eventid}} not found.</h2>
+{% endif %}
+
+
+{% endblock %}
