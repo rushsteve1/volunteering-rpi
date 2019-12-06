@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2019 at 07:21 PM
+-- Generation Time: Dec 06, 2019 at 02:35 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -45,11 +45,11 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `eventName`, `orgID`, `description`, `location`, `occupancy`, `eventDuration`, `eventDate`) VALUES
 (1, 'CircleK Annual Food drive', 1, 'Come help us bring food to a food kitchen!', 'Troy, New York', 30, 2, '2019-11-25 10:22:00'),
-(2, 'RPI Ambulance Info Session', 2, 'Come learn more about joining RPI Ambulance!', 'RPI Union 15th Street Lobby', 50, 3, NULL);
-(3, 'Biomedical Engineering Seminar', 3, 'Interstitial fluid flow in the brain: contributions to disease', 'Jonsson Engineering Center 3117 JEC', 50, 3, '2019-05-19 1:30:00');
-(4, 'Calling All Crafters, Bakers, and Artists!', 4, 'The United Way is once again holding the Community Fair and Bake Sale in conjunction with Procurement’s Supplier Showcase!', 'Armory', 50, 3, '2019-05-19 11:00:00');
-(5, 'Feature Webinar Invitation: Data Analytics, Machine Learning & AI', 5, 'Dean Aric Krause will be hosting a feature webinar to review Rensselaers digitally delivered, project-based graduate certificate programs in Business Intelligence and Machine Learning & AI.', 'Online', 50, .5, '2019-06-19 12:00:00');
-(6, 'Troy Compost seeks Volunteers', 6, 'Troy Compost has been organizing a number of big composting initiatives in Troy, such as the Farmers Market foodscraps collection, a project that diverts food waste from landfills to get composted at local farms instead.', 'Campus-wide', 50, 4, '2019-25-19 8:00:00');
+(2, 'RPI Ambulance Info Session', 2, 'Come learn more about joining RPI Ambulance!', 'RPI Union 15th Street Lobby', 50, 3, NULL),
+(3, 'Biomedical Engineering Seminar', 2, 'Interstitial fluid flow in the brain: contributions to disease', 'Jonsson Engineering Center 3117 JEC', 50, 3, '2019-05-19 01:30:00'),
+(4, 'Calling All Crafters, Bakers, and Artists!', 4, 'The United Way is once again holding the Community Fair and Bake Sale in conjunction with Procurements Supplier Showcase!', 'Armory', 50, 3, '2019-05-19 11:00:00'),
+(5, 'Feature Webinar Invitation: Data Analytics, Machine Learning & AI', 5, 'Dean Aric Krause will be hosting a feature webinar to review Rensselaers digitally delivered, project-based graduate certificate programs in Business Intelligence and Machine Learning & AI.', 'Online', 50, 1, '2019-06-19 12:00:00'),
+(6, 'Troy Compost seeks Volunteers', 6, 'Troy Compost has been organizing a number of big composting initiatives in Troy, such as the Farmers Market foodscraps collection, a project that diverts food waste from landfills to get composted at local farms instead.', 'Campus-wide', 50, 4, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -94,13 +94,12 @@ CREATE TABLE `userevent` (
 
 INSERT INTO `userevent` (`eventID`, `rcsID`) VALUES
 (1, 'lazare2'),
-(2, 'lettkm');
-(3, 'mahmoy');
-(4, 'smithj4');
-(5, 'suraps3');
-(6, 'liangs5');
+(2, 'lettkm'),
+(3, 'mahmoy'),
+(4, 'smithj4'),
+(5, 'suraps3'),
+(6, 'liangs5'),
 (7, 'vanzys');
-
 
 -- --------------------------------------------------------
 
@@ -140,10 +139,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`rcsID`, `fullName`, `about`, `hours`) VALUES
 ('lazare2', 'Evan Lazaro', 'I enjoy volunteering!', 10),
 ('lettkm', 'Meagan Lettko', 'I enjoy student government!', 5),
+('liangs5', 'SJ Liang', 'Love to cook!', 2000),
 ('mahmoy', 'Yaseen Mahmoud', 'Horns down brother!', 0),
-('smithj4', 'John Smith', 'Here for the fun!', 200);
-('suraps3', 'Sanjana Surapaneni', 'Live Love Laugh!', 20);
-('liangs5', 'SJ Liang', 'Love to cook!', 2000);
+('smithj4', 'John Smith', 'Here for the fun!', 200),
+('suraps3', 'Sanjana Surapaneni', 'Live Love Laugh!', 20),
 ('vanzys', 'Steven vanZyl', 'Love php!', 300);
 
 --
@@ -192,43 +191,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `events`
---
-ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`orgID`) REFERENCES `organizations` (`id`);
-
---
--- Constraints for table `organizations`
---
-ALTER TABLE `organizations`
-  ADD CONSTRAINT `organizations_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `users` (`rcsID`);
-
---
--- Constraints for table `userevent`
---
-ALTER TABLE `userevent`
-  ADD CONSTRAINT `userevent_ibfk_1` FOREIGN KEY (`eventID`) REFERENCES `events` (`id`),
-  ADD CONSTRAINT `userevent_ibfk_2` FOREIGN KEY (`rcsID`) REFERENCES `users` (`rcsID`);
-
---
--- Constraints for table `userorganization`
---
-ALTER TABLE `userorganization`
-  ADD CONSTRAINT `userorganization_ibfk_1` FOREIGN KEY (`orgID`) REFERENCES `organizations` (`id`),
-  ADD CONSTRAINT `userorganization_ibfk_2` FOREIGN KEY (`rcsID`) REFERENCES `users` (`rcsID`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
