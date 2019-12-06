@@ -23,7 +23,9 @@
       <br>
       <p class="card-text">About me: {{userData.about}} </p>
       <br>
+      {% if username == user %}
       <a href="/logout" class="btn btn-primary active" role="button" aria-pressed="true">Log out</a>
+      {% endif %}
     </div>
   </div>
   {% else %}
