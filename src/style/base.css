@@ -32,6 +32,10 @@ body{
   width:40rem;
 }
 
+.logo {
+  width: 10rem;
+  height:10rem;
+}
 .bd-callout {
     padding: 1.25rem;
     margin-top: 1.25rem;
@@ -70,6 +74,14 @@ body{
     color: #5bc0de
 }
 
+.bd-callout-primary {
+    border-left-color: #428bca
+}
+
+
+.bd-callout-primary h4 {
+    color: #428bca
+}
 
 .bd-callout-success {
     border-left-color: #5cb85c

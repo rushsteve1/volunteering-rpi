@@ -11,12 +11,22 @@
 </div>
 
 {% for org in organizations %}
-<div class="jumbotron text-center">
-  <h3 class="text-danger"><a href="/org/{{org[0]}}">{{org[1]}}</a></h3>
-  <p>President: {{org[4]}}</p>
-  <!-- TODO: Turn Admin username into name -->
-  <p>{{org[2]}}</p>
+
+<div class="bd-callout bd-callout-primary">
+  <div class="row">
+    <div class="col-3 center">
+      <img src={{org[5]}} class="logo"/>
+    </div>
+    <div class="col-9">
+      <h3 class="text-danger"><a href="/org/{{org[0]}}">{{org[1]}}</a></h3>
+      <p>President: {{org[4]}}</p>
+      <!-- TODO: Turn Admin username into name -->
+      <p>{{org[2]}}</p>
+      <p>Website: <a href={{org[3]}}>{{org[3]}}</a></p>
+    </div>
+  </div>
 </div>
+
 {% endfor %}
 
 </div>

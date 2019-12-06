@@ -71,8 +71,8 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `orgName`, `description`, `website`, `adminID`, `imageURL`) VALUES
-(1, 'CircleK International', 'An RPI Volunteer Organization', 'https://union.rpi.edu/clubs/service/216-circle-k-international', 'lazare2', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D44573412594&imgrefurl=https%3A%2F%2Fwww.facebook.com%2FRPICircleK%2F&docid=S8VMArsd6MJVGM&tbnid=prAosV3IAm_QpM%3A&vet=10ahUKEwiA8a376Z_mAhWEg-AKHcpKDoAQMwhEKAIwAg..i&w=960&h=960&bih=744&biw=767&q=circle%20k%20rpi&ved=0ahUKEwiA8a376Z_mAhWEg-AKHcpKDoAQMwhEKAIwAg&iact=mrc&uact=8'),
-(2, 'RPI Ambulance', 'Provides emergency medical services to the Rensselaer community, and provides educational programs in the field of emergency medicine for members of the organization and the Rensselaer community.', 'https://rpiambulance.com/', 'mahmoy', NULL),
+(1, 'CircleK International', 'An RPI Volunteer Organization', 'https://union.rpi.edu/clubs/service/216-circle-k-international', 'lazare2', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb2-47ZX0RPgqaC6Dx_ubR8YRqdiuUw-kiZW7_lIVV6h-B-511&s'),
+(2, 'RPI Ambulance', 'Provides emergency medical services to the Rensselaer community, and provides educational programs in the field of emergency medicine for members of the organization and the Rensselaer community.', 'https://rpiambulance.com/', 'mahmoy', 'https://media.licdn.com/dms/image/C4E0BAQF_dQeXKIuvIQ/company-logo_200_200/0?e=2159024400&v=beta&t=WAhQUY_rwjl1HOxVcLxypR-Ixx0LBFKiJV0Ei5T1tYU'),
 (4, 'Student Senate', 'We work with students and administrators to improve life around campus!', 'https://sg.rpi.edu/about/senate', 'lettkm', NULL);
 (5, 'Web Seminars', 'We work to host webinars!', 'https://sg.rpi.edu/about/senate', '', NULL);
 (6, 'Troy Compost', 'Troy Compost has been organizing a number of big composting initiatives in Troy!', 'http://troycompost.wikispaces.com/Troy+Compost', 'schafe', NULL);
