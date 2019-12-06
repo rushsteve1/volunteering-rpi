@@ -50,7 +50,6 @@ $container->set('notFoundHandler', function($ctx) {
 
 // CAS Connection information
 phpCAS::client(CAS_VERSION_2_0, 'cas-auth.rpi.edu/cas', 443, '');
-// Currently does not check CA certificate, need to fix later
 // phpCAS::setCasServerCACert($cas_server_ca_cert_path);
 phpCAS::setNoCasServerValidation();
 
@@ -121,17 +120,20 @@ $app->get('/org/{orgid}', function (Request $request, Response $response, array 
    [
       'username' => getUsername(),
       'orgid' => $args['orgid'],
-      'orgData' => select_org_by_id($args['orgid'])
+      'orgData' => select_org_by_id($args['orgid']),
+      'events' => select_events_by_org($args['orgid'])
    ]);
 })->setName('org');
 
 // The handler for the event page
 $app->get('/event/{eventid}', function (Request $request, Response $response, array $args) {
+   $eventData = select_event_by_id($args['eventid']);
    return $this->get('view')->render($response, 'event.html',
    [
       'username' => getUsername(),
       'eventid' => $args['eventid'],
-      'eventData' => select_event_by_id($args['eventid'])
+      'eventData' => $eventData,
+      'orgData' => select_org_by_id($eventData["id"])
    ]);
 })->setName('event');
 
