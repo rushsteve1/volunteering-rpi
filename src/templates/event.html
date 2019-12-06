@@ -6,22 +6,29 @@
 {% block body %}
 <div class="center">
   <div class="jumbotron text-center w-50">
-    <h2 class="display-4 text-danger">Event Page<h2>
+    <h2 class="text-danger">Event Page<h2>
+  </div>
+</div>
+<div class="center">
+  {% if eventData|length > 0 %}
+  <div class="card">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">{{eventData.eventName}}</h2>
+      <p class="card-text">{{eventData.description}}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Organization: <a href="/org/{{orgData.id}}">{{orgData.orgName}}</a></li>
+        <li class="list-group-item">Location: {{eventData.location}}</li>
+        <li class="list-group-item">Duration: {{eventData.eventDuration}} hours</li>
+        <li class="list-group-item">Date: {{eventData.eventDate}}</li>
+        <li class="list-group-item">Date: {{eventData.eventDate}}</li>
+      </ul>
+    </div>
   </div>
 </div>
 
-{% if eventData|length > 0 %}
-<div class="user">
-  <h2>{{eventData.eventName}}</h2>
-  <div class="about">
-    <p>Description: {{eventData.description}} </p>
-    <p>Organization: <a href="/org/{{orgData.id}}">{{orgData.orgName}}</a> </p>
-    <p>Location: {{eventData.location}}</p>
-    <p>Duration: {{eventData.eventDuration}} hours</p>
-    <p>Date: {{eventData.eventDate}}</p>
-    <p>Occupancy: {{eventData.occupancy}}</p>
-  </div>
-</div>
 </br>
 
 {% else %}

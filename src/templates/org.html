@@ -8,7 +8,11 @@
 {% if orgData|length > 0 %}
 <div class="user">
   <img src="{{orgData.imageURL}}"/>
-  <h2>{{orgData.orgName}}'s page</h2> 
+  <div class="center">
+    <div class="jumbotron text-center w-50">
+      <h2 class="text-danger">{{orgData.orgName}}'s page<h2>
+    </div>
+  </div>
   <div class="about">
     <p>Description: {{orgData.description}} </p>
     <p>Website: {{orgData.website}}</p>
