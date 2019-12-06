@@ -3,21 +3,20 @@
 {% block title %}{{orgData.orgName}}{% endblock %}
 
 {% block body %}
-<h1>Org Page</h1>
+
+<div class="center">
+  <div class="jumbotron text-center w-50">
+    <h2 >{{orgData.orgName}}'s Page<h2>
+  </div>
+</div>
 
 {% if orgData|length > 0 %}
-<div class="user">
-  <img src="{{orgData.imageURL}}"/>
-  <div class="center">
-    <div class="jumbotron text-center w-50">
-      <h2 class="text-danger">{{orgData.orgName}}'s page<h2>
-    </div>
-  </div>
-  <div class="about">
-    <p>Description: {{orgData.description}} </p>
-    <p>Website: {{orgData.website}}</p>
-    <p>Admin: {{pres.fullName}}</p>
-  </div>
+<div class="center card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Description: {{orgData.description}}</li>
+      <li class="list-group-item">Website: <a href="{{orgData.website}}">{{orgData.website}}</a></li>
+      <li class="list-group-item">Admin: <a href="/user/{{pres.rcsID}}">{{pres.fullName}}</a></li>
+    </ul>
 </div>
 <div class="list-group event">
   <div class="col m-5">
@@ -32,9 +31,6 @@
       <small>@{{event[4]}}</small>
     </a>
   {% endfor %}
-  {% if event|length == 0 %}
-  <p>No events found.</p>
-  {% endif %}
 
   </div>
 </div>
