@@ -155,6 +155,22 @@ $app->post('/create-event', function (Request $request, Response $response, arra
    return $response->withHeader('Location', '/')->withStatus(301);
 })->setName('event');
 
+// The handler for the org creation page
+$app->get('/create-org', function (Request $request, Response $response, array $args) {
+   return $this->get('view')->render($response, 'create-org.html',
+   [
+      'username' => getUsername()
+   ]);
+})->setName('org');
+
+// The handler for the org submission
+$app->post('/create-org', function (Request $request, Response $response, array $args) {
+   $data = $request->getParsedBody();
+   insert_org($data["name"], $data["description"], $data["website"], getUsername(), $data["image"]);
+   return $response->withHeader('Location', '/organizations' )->withStatus(301);
+})->setName('org');
+
+
 // Run the application
 $app->run();
 

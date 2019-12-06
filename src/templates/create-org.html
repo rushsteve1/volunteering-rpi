@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Create Organization{% endblock %}
+
+{% block body %}
+<div class="center">
+  <div class="jumbotron text-center w-50">
+    <h2>Create Org<h2>
+  </div>
+</div>
+
+<form method="post">
+  <p>Name: <input type="text" name="name" required/></p>
+  <p>Description: <input type="text" name="description" required/></p>
+  <p>Website: <input type="text" name="website" required/></p>
+  <p>Image URL: <input type="text" name="image" required/></p>
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

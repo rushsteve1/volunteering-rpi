@@ -33,7 +33,7 @@ $_select_events_by_org = $conn->prepare("SELECT * FROM events WHERE orgID=? ORDE
 
 $_select_orgs = $conn->prepare("SELECT * FROM organizations;");
 
-$_insert_org = $conn->prepare("INSERT INTO organizations (orgName, description, website, adminID) VALUES (?, ?, ?, ?);");
+$_insert_org = $conn->prepare("INSERT INTO organizations (orgName, description, website, adminID, imageURL) VALUES (?, ?, ?, ?, ?);");
 
 $_select_org_users = $conn->prepare("SELECT users.* FROM userorganizations uo WHERE uo.orgID=? INNER JOIN users ON users.rcsID=uo.rcsID;");
 
@@ -110,12 +110,12 @@ function select_orgs() {
     return $_select_orgs->get_result()->fetch_all();
 }
 
-function insert_org(string $name, string $description, string $website, string $adminID) {
+function insert_org(string $name, string $description, string $website, string $adminID, string $imageURL) {
     global $_insert_org, $_insert_userorg, $conn;
     $_insert_org->reset();
     $_insert_userorg->reset();
 
-    $_insert_org->bind_param("ssss", $name, $description, $website, $adminID);
+    $_insert_org->bind_param("sssss", $name, $description, $website, $adminID, $imageURL);
     $a = $_insert_org->execute();
 
     // Create a relation to the admin user
