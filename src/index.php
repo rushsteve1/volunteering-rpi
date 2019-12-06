@@ -76,7 +76,7 @@ $app->get('/organizations', function (Request $request, Response $response, arra
    return $this->get('view')->render($response, 'organizations.html', 
    [
       'username' => getUsername(), 
-      'organizations' => select_orgs()
+      'organizations' => array_map(function($e) { $e['pres'] = select_user_by_rcsid($e[4]); return $e; }, select_orgs()),
    ]);
 })->setName('organizations');
 
@@ -116,12 +116,14 @@ $app->get('/user/{user}', function (Request $request, Response $response, array 
 
 // The handler for the org page
 $app->get('/org/{orgid}', function (Request $request, Response $response, array $args) {
+   $orgData = select_org_by_id($args['orgid']);
    return $this->get('view')->render($response, 'org.html',
    [
       'username' => getUsername(),
       'orgid' => $args['orgid'],
-      'orgData' => select_org_by_id($args['orgid']),
-      'events' => select_events_by_org($args['orgid'])
+      'orgData' => $orgData,
+      'events' => select_events_by_org($args['orgid']),
+      'pres' => select_user_by_rcsid($orgData['adminID'])
    ]);
 })->setName('org');
 

@@ -13,7 +13,7 @@
 {% for org in organizations %}
 <div class="jumbotron text-center">
   <h3 class="text-danger"><a href="/org/{{org[0]}}">{{org[1]}}</a></h3>
-  <p>President: {{org[4]}}</p>
+  <p>President: {{org['pres']['fullName']}}</p>
   <!-- TODO: Turn Admin username into name -->
   <p>{{org[2]}}</p>
 </div>
