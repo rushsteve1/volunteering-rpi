@@ -23,7 +23,7 @@
       <input type="text" name="location" class="form-control" required/ >
     </div>
     <label for="org">Organization</label>
-    <select class="form-control">
+    <select class="form-control" name="org">
       {% for org in orgData %}
         <option value="{{org[0]}}">{{org[1]}}</option>
       {% endfor %}
@@ -34,10 +34,10 @@
     </div>
     <div class="form-group">
       <label for="duration">Duration (in hours)</label>
-      <input type="text" name="duration" class="form-control" required/ >
+      <input type="number" name="duration" class="form-control" required/ >
     </div>
     <div class="form-group">
-      <label for="date">Duration (in hours)</label>
+      <label for="date">Date</label>
       <input type="datetime-local" name="date" class="form-control" required/ >
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
